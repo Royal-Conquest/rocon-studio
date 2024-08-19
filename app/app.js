@@ -26,7 +26,10 @@ import { viewport } from "../modules/viewport/viewport.js"
 // import { tabManage } from "../modules/tab-manage/tab-manage.js";
 import { tabLoad } from "../modules/tab-load/tab-load.js";
 import { sequence } from "../modules/sequence/sequence.js";
-import { resizeHandle } from "../modules/animation/resize-handle/resize-handle.js"; 
+// import { resizeHandle } from "../modules/resize-handle/resize-handle.js"; 
+import { applicationPath } from "../modules/application-path/application-path-.js";
+import { codeEditor } from "../modules/code-editor/code-editor.js";
+import { autoComplete } from "../modules/auto-complete/auto-complete.js";
 
 // WINDOWS : 
 
@@ -53,10 +56,13 @@ function appLoad(){
     console("Application Started...", "success"); 
     viewport({
         gridWidth : 50,
-        gridHeight : 50
-    }) 
+        gridHeight : 50  
+    })    
     sequence();
-    resizeHandle();
+    // resizeHandle();
+    applicationPath();
+    codeEditor();
+    // autoComplete();
 }
 
 document.addEventListener("DOMContentLoaded",appLoad());

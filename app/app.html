@@ -19,6 +19,63 @@
 
     <!-- NON-RENDERABLE AREA -->
 
+    <!-- CONTEXT MENU -->
+
+    <div id="context-menu-container">
+        <button class="context-menu-button"><i class="ri-skip-right-fill"></i>Open</button>
+        <button class="context-menu-button"><i class="ri-skip-right-fill"></i>Open</button>
+        <button class="context-menu-button"><i class="ri-mail-check-line"></i>Open</button>
+    </div>
+
+    <!-- CONTEXT MENU END -->
+
+    <!-- AUTO COMPLETE -->
+
+    <div id="auto-complete-container">
+        <div class="auto-complete-searchbox-container">
+            <i class="ri-menu-search-line auto-complete-searchbox-icon"></i>
+            <input id="auto-complete-input" class="auto-complete-searchbox-input" type="text" placeholder="Write a code">
+        </div>
+        <div id="auto-complete-list-container" class="auto-complete-complete-list-container v-scroll">
+            
+            <!-- TAMPLATE <div class="auto-complete-complete-row">
+                <i class="ri-braces-fill auto-complete-complete-row-icon"></i>
+                <span class="auto-complete-complete-row-label">Document</span>
+            </div> -->
+            
+        </div>
+    </div>
+
+    <!-- AUTO COMPLETE END -->
+
+    <!-- TABS -->
+
+    <!-- CODE EDITOR TAB -->
+
+    <div id="code-editor-tab" class="non-renderable">
+        <div class="code-editor-menu-container">
+            <div class="code-editor-menu-right-container">
+                <button class="code-editor-menu-button"><i class="ri-save-3-fill"></i></button>
+                <button class="code-editor-menu-button"><i class="ri-braces-fill"></i></button>
+                <button class="code-editor-menu-button"><i class="ri-import-fill"></i></button>
+            </div>
+            <div class="code-editor-menu-left-container">
+                <button class="code-editor-menu-button"><i class="ri-arrow-left-s-line"></i></button>
+                <button class="code-editor-menu-button"><i class="ri-arrow-right-s-line"></i></button>
+                <button class="code-editor-menu-button"><i class="ri-settings-4-fill"></i></button>
+                <button class="code-editor-menu-button"><i class="ri-play-fill"></i></button>
+            </div>
+        </div>
+        <div id="code-editor" class="code-editor-container">
+// 2024 Royal Conquest Team.
+// 2024 BioBit Games. 
+        </div>  
+    </div>
+
+    <!-- CODE EDITOR TAB END -->
+
+    <!-- TABS END -->
+
     <!-- CUSTOM MOUSE -->
 
     <div id="custom-mouse">
@@ -1061,6 +1118,7 @@
     <!-- MAIN CONTAINER END -->  
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/8.2.6/pixi.min.js"></script>
+    <script src="../libs/ace-editor/ace.js"></script>
     <script defer type="module" src="./app.js"></script>  
         
 </body>

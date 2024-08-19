@@ -21,6 +21,7 @@ const terminalTab = getUi("terminal-tab");
 const twoDStage = getUi("viewport-tab");
 const inspectorTab = getUi("inspector-tab");
 const explorerTab = getUi("explorer-tab");
+const codeEidtorTab = getUi("code-editor-tab");
 
 export function tabLoad(){
  
@@ -53,20 +54,26 @@ export function tabLoad(){
             name: "Inspector",
             content: inspectorTab,
             ID: "TABTgL",
-            location: "right"
+            location: "right" 
         },
         {
             name: "Explorer",
             content: explorerTab,
             ID: "TABTgL",
             location: "left"
+        },
+        {
+            name: "Code",
+            content: codeEidtorTab,
+            ID: "TABTgL",
+            location: "top"
         }
     ];
 
     tabManage(tabList);
 
     return { 
-        tabList:tabList
+        tabList:tabList 
     }
 
 }

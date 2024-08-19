@@ -15,6 +15,7 @@
 
 import { getUi } from "../get-ui/get-ui.js";
 import { console } from "../console/console.js";
+import { contextMenu } from "../context-menu/context-menu.js";
 
 const TrackerDefaultColor = {
     red : "#A71919",
@@ -35,7 +36,7 @@ const sequenceDataTest = [
             {
                 name : "Tracker Title",
                 start : 0,
-                end : 400,
+                end : 200,
                 startValue : "43",
                 endValue : "50",
                 id : "44343"
@@ -61,6 +62,14 @@ const sequenceDataTest = [
             {
                 name : "Tracker Title",
                 start : 0,
+                end : 200,
+                startValue : "43434",
+                endValue : "4343",
+                id : "44343"
+            },
+            {
+                name : "Tracker Title",
+                start : 210,
                 end : 200,
                 startValue : "43434",
                 endValue : "4343",
@@ -322,6 +331,20 @@ export function sequence(sequenceData = sequenceDataTest) {
             tracker.appendChild(trackerHandleRight);
             sequenceTrackerRow.appendChild(tracker);
             sequenceTrackerContainer.insertBefore(sequenceTrackerRow,sequenceStaticTrackerRow);
+
+            tracker.addEventListener("contextmenu",function(){
+                const contextTamplate = [
+                    {
+                        name : "HELLO WORLD",
+                        id : "",
+                        icon : ""
+                    }
+                ]  
+    
+                contextMenu(tracker,contextTamplate)
+            })
+          
+           
         });
     });
 

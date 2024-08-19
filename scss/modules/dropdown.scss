@@ -24,6 +24,7 @@
     overflow: hidden;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 99999;
     &::-webkit-scrollbar {
         background: none; 
         width: 5px;
