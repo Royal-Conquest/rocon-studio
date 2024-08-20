@@ -13,47 +13,62 @@
 
 import { getUi } from "../get-ui/get-ui.js";
 
-const contextTemplate = [
-    {
-        name: "",
-        id: "",
-        icon: ""
-    }
-];
+const contextMenuContainer = getUi("context-menu-container");
 
-export function contextMenu(element, context) {
-    const contextMenuContainer = getUi("context-menu-container");
+export function contextMenu(context, event) {
+    console.log("Context array:", context); 
 
     contextMenuContainer.innerHTML = "";
 
-    context.forEach(contexts => {
-        const contextMenuButton = document.createElement("button");
+    context.forEach(function(contexts) {
+        
+        const contextMenuButton = document.createElement("div");
         contextMenuButton.classList.add("context-menu-button");
-        contextMenuButton.textContent = contexts.name;
-        contextMenuButton.id = contexts.id;
+        contextMenuButton.id = contexts.id; 
+
+        const contextMenuLabel = document.createElement("span");
+        contextMenuLabel.textContent = contexts.name;
 
         const contextMenuButtonIcon = document.createElement("i");
-        contextMenuButtonIcon.classList.add(contexts.icon);
-
+        contextMenuButtonIcon.classList.add(`${contexts.icon}`);
+        
         contextMenuButton.appendChild(contextMenuButtonIcon);
+        contextMenuButton.appendChild(contextMenuLabel)
         contextMenuContainer.appendChild(contextMenuButton);
+
     });
 
-    element.addEventListener("click", function (e) {
-        e.preventDefault(); 
-    
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
 
+   
+
+    const contextMenuContainerRect = contextMenuContainer.getBoundingClientRect();
+
+    function setPosition(){
         contextMenuContainer.style.left = `${mouseX}px`;
         contextMenuContainer.style.top = `${mouseY}px`;
+        contextMenuContainer.style.bottom = "auto";
 
-        contextMenuContainer.style.display = "flex"; 
+        if (contextMenuContainerRect.bottom > window.innerHeight - 50){
+            contextMenuContainer.style.bottom = `${10}px`;
+            contextMenuContainer.style.top = "auto";
+        }
+    }
+
+    contextMenuContainer.addEventListener("click",function(){
+        contextMenuContainer.style.display = "none";
+    })   
+
+    contextMenuContainer.style.display = "flex"; 
+
+    document.addEventListener("click", function handleClickOutside(e) {
+        if (!contextMenuContainer.contains(e.target)) {
+            contextMenuContainer.style.display = "none";
+            document.removeEventListener("click", handleClickOutside);
+        }
     });
 
-    // document.addEventListener("click", function (e) {
-    //     if (!contextMenuContainer.contains(e.target) && e.target !== element) {
-    //         contextMenuContainer.style.display = "none";
-    //     }
-    // });
+    setPosition();
 }
+

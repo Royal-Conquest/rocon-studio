@@ -332,19 +332,45 @@ export function sequence(sequenceData = sequenceDataTest) {
             sequenceTrackerRow.appendChild(tracker);
             sequenceTrackerContainer.insertBefore(sequenceTrackerRow,sequenceStaticTrackerRow);
 
-            tracker.addEventListener("contextmenu",function(){
-                const contextTamplate = [
+            function trackerHandleContextMenu(e) {
+                e.preventDefault(); // Previne o menu de contexto padrão do navegador
+                
+                const contextTemplatee = [
                     {
-                        name : "HELLO WORLD",
-                        id : "",
-                        icon : ""
+                        name: "Delete",
+                        id: "deleteTrackMenu",
+                        icon: "ri-delete-bin-6-fill"
+                    },
+                    {
+                        name: "Duplicate Left",
+                        id: "trt",
+                        icon: "ri-expand-left-fill"
+                    },
+                    {
+                        name: "Duplicate Right",
+                        id: "trt",
+                        icon: "ri-expand-right-fill"
+                    },
+                    {
+                        name: "Lock",
+                        id: "trt",
+                        icon: "ri-lock-fill"
                     }
-                ]  
-    
-                contextMenu(tracker,contextTamplate)
-            })
-          
-           
+                ];
+            
+                // Passa o elemento tracker e o template do menu para a função contextMenu
+                contextMenu(contextTemplatee,event);
+
+                const deleteTrackMenu = getUi("deleteTrackMenu");
+                deleteTrackMenu.addEventListener("click",function(){
+                    tracker.remove();
+                    console(`Tracker is Deleted`,"success");
+                }) 
+            } 
+            
+            tracker.addEventListener("contextmenu", trackerHandleContextMenu);
+            
+            
         });
     });
 
