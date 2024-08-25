@@ -66,6 +66,18 @@
     padding-right: 5px;
 }
 
+// STATUS BAR ACTION : 
+
+.status-bar-action{
+    cursor: pointer;
+    &:hover{
+        background: darken($gray-color,70%);
+    }
+    &:active{
+        opacity: 90%;
+    }
+}
+
 // STATUS BAR ICON : 
 
 .status-bar-icon{

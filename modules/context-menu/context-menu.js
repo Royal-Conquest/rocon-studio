@@ -8,7 +8,6 @@
 
 
 
-
 // CONTEXT MENU : 
 
 import { getUi } from "../get-ui/get-ui.js";
@@ -21,7 +20,6 @@ export function contextMenu(context, event) {
     contextMenuContainer.innerHTML = "";
 
     context.forEach(function(contexts) {
-        
         const contextMenuButton = document.createElement("div");
         contextMenuButton.classList.add("context-menu-button");
         contextMenuButton.id = contexts.id; 
@@ -31,34 +29,43 @@ export function contextMenu(context, event) {
 
         const contextMenuButtonIcon = document.createElement("i");
         contextMenuButtonIcon.classList.add(`${contexts.icon}`);
+
+        const contextMenuButtonDivisor = document.createElement("div");
+        contextMenuButtonDivisor.classList.add("context-menu-button-divisor")
+
+        if (contexts.divisor == true){
+            contextMenuButton.appendChild(contextMenuButtonDivisor)
+        }
         
         contextMenuButton.appendChild(contextMenuButtonIcon);
-        contextMenuButton.appendChild(contextMenuLabel)
+        contextMenuButton.appendChild(contextMenuLabel);
         contextMenuContainer.appendChild(contextMenuButton);
-
     });
 
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-   
-
-    const contextMenuContainerRect = contextMenuContainer.getBoundingClientRect();
-
-    function setPosition(){
+    function setPosition() {
         contextMenuContainer.style.left = `${mouseX}px`;
         contextMenuContainer.style.top = `${mouseY}px`;
-        contextMenuContainer.style.bottom = "auto";
 
-        if (contextMenuContainerRect.bottom > window.innerHeight - 50){
-            contextMenuContainer.style.bottom = `${10}px`;
-            contextMenuContainer.style.top = "auto";
+        // Agora o menu já foi posicionado, podemos calcular o tamanho real
+        const contextMenuContainerRect = contextMenuContainer.getBoundingClientRect();
+
+        // Verifica se ultrapassou a borda inferior da janela
+        if (contextMenuContainerRect.bottom > window.innerHeight) {
+            contextMenuContainer.style.top = `${window.innerHeight - contextMenuContainerRect.height - 10}px`;
         }
-    }
 
-    contextMenuContainer.addEventListener("click",function(){
+        // Verifica se ultrapassou a borda direita da janela
+        if (contextMenuContainerRect.right > window.innerWidth) {
+            contextMenuContainer.style.left = `${window.innerWidth - contextMenuContainerRect.width - 10}px`;
+        }
+    } 
+
+    contextMenuContainer.addEventListener("click", function() {
         contextMenuContainer.style.display = "none";
-    })   
+    });
 
     contextMenuContainer.style.display = "flex"; 
 
@@ -67,8 +74,8 @@ export function contextMenu(context, event) {
             contextMenuContainer.style.display = "none";
             document.removeEventListener("click", handleClickOutside);
         }
-    });
+    }); 
 
     setPosition();
 }
-
+   

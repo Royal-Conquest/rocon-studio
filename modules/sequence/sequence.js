@@ -145,7 +145,7 @@ const sequenceDataTest = [
         trackerGroup : [
             {
                 name : "Tracker Title",
-                start : 0,
+                start : 10,
                 end : 400,
                 startValue : "43434",
                 endValue : "4343",
@@ -181,7 +181,7 @@ const sequenceDataTest = [
         id : "4544",
         trackerGroup : [
             {
-                name : "Tracker 01",
+                name : "Animation",
                 start : 0,
                 end : 200,
                 startValue : "43434",
@@ -201,7 +201,7 @@ export function sequence(sequenceData = sequenceDataTest) {
     const sequenceStaticTrackerRow = getUi("sequence-static-tracker-row");
     const sequenceStaticTrackRow = getUi("sequence-static-track-row");
 
-    sequenceData.forEach(trackData => { // Iterar sobre sequenceData, não sequenceData.trackerGroup
+    sequenceData.forEach(trackData => { 
         
         const sequenceTrackerGroup = trackData.trackerGroup;
 
@@ -339,37 +339,42 @@ export function sequence(sequenceData = sequenceDataTest) {
                     {
                         name: "Delete",
                         id: "deleteTrackMenu",
-                        icon: "ri-delete-bin-6-fill"
+                        icon: "ri-delete-bin-6-fill",
+                        divisor : true
                     },
                     {
                         name: "Duplicate Left",
                         id: "trt",
-                        icon: "ri-expand-left-fill"
+                        icon: "ri-expand-left-fill",
+                        divisor : false
                     },
                     {
                         name: "Duplicate Right",
                         id: "trt",
-                        icon: "ri-expand-right-fill"
+                        icon: "ri-expand-right-fill",
+                        divisor : true
                     },
                     {
                         name: "Lock",
                         id: "trt",
-                        icon: "ri-lock-fill"
+                        icon: "ri-lock-fill",
+                        divisor : false
                     }
                 ];
             
-                // Passa o elemento tracker e o template do menu para a função contextMenu
                 contextMenu(contextTemplatee,event);
 
                 const deleteTrackMenu = getUi("deleteTrackMenu");
-                deleteTrackMenu.addEventListener("click",function(){
+                deleteTrackMenu.addEventListener("click",deleteTracker)
+
+                function deleteTracker(){
                     tracker.remove();
-                    console(`Tracker is Deleted`,"success");
-                }) 
+                    console(`Tracker '${trackerName}' is Deleted`,"success");
+                }
+
             } 
             
             tracker.addEventListener("contextmenu", trackerHandleContextMenu);
-            
             
         });
     });

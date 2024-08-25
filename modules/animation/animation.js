@@ -19,23 +19,27 @@ export function animation() {
     const needle = getUi("needle");
     const forwardAnimationButton = getUi("forward-animation");
     const backwardAnimationButton = getUi("backward-animation");
-    const trackRuler = getUi("track-ruler");
+    const trackRuler = getUi("area-time");
     const stopAnimationButton = getUi("stop-animation");
     const playAnimationButtonIcon = document.querySelector(".play-animation-button-icon");
     const stopAnimationButtonIcon = document.querySelector(".stop-animation-button-icon");
     const preNeedle = getUi("pre-needle");
 
-    let animationState; 
+    let animationState = false; 
     let animationFPS = 10;
     let needleLeft = 0; 
     let intervalId = null;
     let needleSnap = 5;
-    
+
+    needle.addEventListener("mouseenter", function() {
+        preNeedle.style.display = "none";
+    });
+
     forwardAnimationButton.addEventListener("click", function() {
         const trackRulerWidth = trackRuler.offsetWidth;
         const needleWidth = needle.offsetWidth;
         
-        if (needleLeft + needleWidth + needleSnap <= trackRulerWidth) { // Verificação de limite
+        if (needleLeft + needleWidth + needleSnap <= trackRulerWidth) {
             needleLeft += needleSnap;
             needle.style.left = `${needleLeft}px`;
         }
@@ -49,7 +53,6 @@ export function animation() {
     });
 
     trackRuler.addEventListener("mousemove", function(e) {
-
         let rect = trackRuler.getBoundingClientRect();
         let mouseX = e.clientX - rect.left;
         let newX = mouseX - (preNeedle.offsetWidth / 2);
@@ -62,19 +65,17 @@ export function animation() {
     
         preNeedle.style.left = `${newX}px`;
         preNeedle.style.display = "flex";
-
-        trackRuler.addEventListener("click", function(){
-            needle.style.left = `${newX}px`;
-            needleLeft = newX;
-        })
     });
 
+    trackRuler.addEventListener("click", function() {
+        let newX = parseFloat(preNeedle.style.left);
+        needle.style.left = `${newX}px`;
+        needleLeft = newX;
+    });
     
     trackRuler.addEventListener("mouseleave", function() {
         preNeedle.style.display = "none";
     });
-
-    const trackRulerHScale = trackRuler.getBoundingClientRect();
 
     function playAnimation(state) {
         if (state) {
@@ -82,9 +83,9 @@ export function animation() {
             intervalId = setInterval(() => {
                 needleLeft++;
                 needle.style.left = `${needleLeft}px`;
-                console(`Animation Frame ${needleLeft}F`,"log")
+                console(`Animation Frame ${needleLeft}F`, "log");
 
-                if (needleLeft >= trackRulerHScale.width) {
+                if (needleLeft >= trackRuler.offsetWidth) {
                     needleLeft = 0;
                     needle.style.left = "0px";
                 }
@@ -93,29 +94,31 @@ export function animation() {
             clearInterval(intervalId);
             stopAnimationButtonIcon.style.color = "";
         }
-        stopAnimationButton.addEventListener("click",function(){
-            needleLeft = 0;
-            needle.style.left = "0px";
-            stopAnimationButtonIcon.style.color = "";
-            clearInterval(intervalId);
-            animationState = false;
-            playAnimationButtonIcon.className = "ri-play-fill";
-            playAnimationButtonIcon.style.color = "";
-        })
-    } 
+    }
+
+    stopAnimationButton.addEventListener("click", function() {
+        needleLeft = 0;
+        needle.style.left = "0px";
+        stopAnimationButtonIcon.style.color = "";
+        clearInterval(intervalId);
+        animationState = false;
+        playAnimationButtonIcon.className = "ri-play-fill";
+        playAnimationButtonIcon.style.color = "";
+    });
 
     playAnimationButton.addEventListener("click", function() {
         animationState = !animationState;
         playAnimation(animationState);
         if (animationState) {
-            playAnimationButtonIcon.style.color = `${primaryColor}`;
+            playAnimationButtonIcon.style.color = primaryColor;
             playAnimationButtonIcon.className = "ri-pause-mini-fill";
-            console("animação pausada","log");
+            console("animação pausada", "log");
         } else {
             playAnimationButtonIcon.style.color = "";
             playAnimationButtonIcon.className = "ri-play-fill";
-        } 
+        }
     });
+
     function dragNeedle(event) {
         event.preventDefault();
         let shiftX = event.clientX - needle.getBoundingClientRect().left;
@@ -125,10 +128,8 @@ export function animation() {
 
             if (newLeft < 0) {
                 newLeft = 0;
-            }
-            let rightEdge = trackRuler.offsetWidth - needle.offsetWidth;
-            if (newLeft > rightEdge) {
-                newLeft = rightEdge;
+            } else if (newLeft > trackRuler.offsetWidth - needle.offsetWidth) {
+                newLeft = trackRuler.offsetWidth - needle.offsetWidth;
             }
 
             needle.style.left = newLeft + 'px';
@@ -143,8 +144,7 @@ export function animation() {
 
         document.addEventListener('mouseup', function() {
             document.removeEventListener('mousemove', onMouseMove);
-            needle.onmouseup = null;
-        });
+        }, { once: true });
     }
 
     needle.addEventListener('mousedown', dragNeedle);
@@ -152,3 +152,4 @@ export function animation() {
         return false; 
     };
 }
+

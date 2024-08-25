@@ -30,6 +30,7 @@ import { sequence } from "../modules/sequence/sequence.js";
 import { applicationPath } from "../modules/application-path/application-path-.js";
 import { codeEditor } from "../modules/code-editor/code-editor.js";
 import { autoComplete } from "../modules/auto-complete/auto-complete.js";
+import { statusBar } from "../modules/status-bar/status-bar.js";
 
 // WINDOWS : 
 
@@ -55,14 +56,15 @@ function appLoad(){
     tabLoad();
     console("Application Started...", "success"); 
     viewport({
-        gridWidth : 50,
-        gridHeight : 50  
+        gridWidth : 25,
+        gridHeight : 25  
     })    
     sequence();
     // resizeHandle();
     applicationPath();
     codeEditor();
     // autoComplete();
+    statusBar();
 }
 
 document.addEventListener("DOMContentLoaded",appLoad());
@@ -201,6 +203,11 @@ const uiRangeProgress = new RangeProgress(inputRange);
 
 // const listPath = applicationPath("C:/Users/Rhyan Eduardo/Documents/GitHub/rocon-studio/game")
 // console(listPath,"log");
+
+// VERIFY IF TAB HAVE CHILDRES : 
+
+
+
 
 
 

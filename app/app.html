@@ -62,7 +62,7 @@
                 <button class="code-editor-menu-button"><i class="ri-arrow-right-s-line"></i></button>
                 <button class="code-editor-menu-button"><i class="ri-settings-4-fill"></i></button>
                 <button class="code-editor-menu-button"><i class="ri-play-fill"></i></button>
-            </div>
+            </div> 
         </div>
         <div id="code-editor" class="code-editor-container">
 // 2024 Royal Conquest Team.
@@ -536,6 +536,17 @@
                         <!-- <button class="tab-button">Asset</button> -->
                     </div>
                     <div id="tab-left" class="ui-tab">
+
+                        <!-- EMPTY TAB -->
+
+                        <div class="empty-tab"> 
+                            <i class="ri-table-alt-line"></i>
+                            <span>There are no tabs to view.</span>
+                            <button><i class="ri-add-fill"></i>Create</button>
+                        </div>
+
+                        <!-- EMPTY TAB END -->
+
                         <div id="explorer-tab" class="fullsize-tab-container">
 
                             <div class="explorer-folder-row">
@@ -607,7 +618,17 @@
                             <!-- <button class="tab-button tab-b-button">UI Design</button> -->
                             <button id="add-tab-button" class="add-tab-button"><i class="ri-add-fill"></i></button>
                         </div>
-                        <div id="tab-top" class="ui-tab">   
+                        <div id="tab-top" class="ui-tab"> 
+                            
+                            <!-- EMPTY TAB -->
+
+                            <div class="empty-tab"> 
+                                <i class="ri-table-alt-line"></i>
+                                <span>There are no tabs to view.</span>
+                                <button><i class="ri-add-fill"></i>Create</button>
+                            </div>
+
+                            <!-- EMPTY TAB END -->
 
                             <!-- VIEWPORT TAB -->
 
@@ -676,6 +697,16 @@
                         </div>
                         <div id="tab-bottom" class="ui-tab">
 
+                            <!-- EMPTY TAB -->
+
+                            <div class="empty-tab"> 
+                                <i class="ri-table-alt-line"></i>
+                                <span>There are no tabs to view.</span>
+                                <button><i class="ri-add-fill"></i>Create</button>
+                            </div>
+
+                            <!-- EMPTY TAB END -->
+
                             <!-- CONSOLE TAB -->
 
                             <div id="console-tab" class="fullsize-tab-container non-renderable">
@@ -719,7 +750,7 @@
                                         </div>
 
                                     </div>  
-                                </div>
+                                </div>   
                                 <div class="timeline-right-container">
                                     <div id="track-ruler" class="timeline-header-container timeline-tracker-header">
                                         <span class="timeline-ruler-value">01.00</span>
@@ -733,11 +764,24 @@
                                         <span class="timeline-ruler-value">80.00</span>
                                         <span class="timeline-ruler-value">90.00</span>
                                         <span class="timeline-ruler-value">100.00</span>
-                                        <div id="needle">
-                                            <div class="needle-bottom"></div>
-                                            <div class="needle-tracker"></div>
+                                        
+                                        <div id="timeline-area-time">
+                                            <div id="timeline-area-time-handle" class="timeline-area-time-left-handle">
+                                                <div class="area-time-handle-indicator"></div>
+                                            </div>
+                                            <div id="area-time">
+                                                <div id="pre-needle"></div>
+                                                <div id="needle">
+                                                    <div class="needle-top"></div>
+                                                    <div class="needle-bottom"></div>
+                                                    <div class="needle-tracker"></div>
+                                                </div>
+                                            </div>
+                                            <div id="timeline-area-time-handle" class="timeline-area-time-right-handle">
+                                                <div class="area-time-handle-indicator"></div>
+                                            </div>
                                         </div>
-                                        <div id="pre-needle"></div>
+                                        
                                     </div>
                                     <div id="sequence-tracker-container" class="timeline-track-container timeline-track-tracker v-scroll-no-border">
                                         
@@ -789,6 +833,17 @@
                         <!-- <button class="tab-button">Debug</button> -->
                     </div>
                     <div id="tab-right" class="ui-tab">
+
+                        <!-- EMPTY TAB -->
+
+                        <div class="empty-tab"> 
+                            <i class="ri-table-alt-line"></i>
+                            <span>There are no tabs to view.</span>
+                            <button><i class="ri-add-fill"></i>Create</button>
+                        </div>
+
+                        <!-- EMPTY TAB END -->
+
                         <div id="inspector-tab" class="fullsize-tab-container v-scroll non-renderable">
                             <div class="control-row-container">
                                 <span class="control-row-contaier-label">Transform</span>
@@ -1083,29 +1138,17 @@
         <!-- STATUS BAR -->
         
         <div id="status-bar">
-            <div class="status-bar-left">
-                <div class="status-container">
+            <div id="status-bar-left-container" class="status-bar-left">
+                <!-- TAMPLATE <div class="status-container">
                     <i class="ri-mouse-fill status-bar-icon"></i>
                     <span class="status-bar-value">X : 0 Y : 0</span>
-                </div>
-                <div class="status-container">
-                    <i class="ri-timeline-view status-bar-icon"></i>
-                    <span class="status-bar-value">00:00:00</span>
-                </div>
-                <div class="status-container">
-                    <i class="ri-hard-drive-2-fill status-bar-icon"></i>
-                    <span class="status-bar-value">20MB</span>
-                </div>
+                </div> -->
             </div>
-            <div class="status-bar-right">
-                <div class="status-container">
+            <div id="status-bar-right-container" class="status-bar-right">
+                <!-- TAMPLATE <div class="status-container">
                     <i class="ri-calendar-todo-fill status-bar-icon"></i>
                     <span class="status-bar-value">10/01</span>
-                </div>
-                <div class="status-container">
-                    <i class="ri-time-fill status-bar-icon"></i>
-                    <span class="status-bar-value">01:31</span>
-                </div>
+                </div> -->
             </div>
         </div>
 

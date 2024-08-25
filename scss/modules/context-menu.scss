@@ -60,4 +60,17 @@
     &:active{
         opacity: 90%;
     }
+    .context-menu-button-divisor{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        box-sizing: border-box;
+        border-left: 10px solid $dark-gray-color;
+        border-right: 10px solid $dark-gray-color;
+        height: 1px;
+        background: $quaternary-color;
+    }
 }
+
+
+

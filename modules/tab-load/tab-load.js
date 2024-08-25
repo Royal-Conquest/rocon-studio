@@ -54,7 +54,7 @@ export function tabLoad(){
             name: "Inspector",
             content: inspectorTab,
             ID: "TABTgL",
-            location: "right" 
+            location: "right"  
         },
         {
             name: "Explorer",
