@@ -201,6 +201,9 @@ export function sequence(sequenceData = sequenceDataTest) {
     const sequenceStaticTrackerRow = getUi("sequence-static-tracker-row");
     const sequenceStaticTrackRow = getUi("sequence-static-track-row");
 
+    const trackerPointUnselect = "ri-add-fill";
+    const trackerPointSelected = "ri-timer-line";
+
     sequenceData.forEach(trackData => { 
         
         const sequenceTrackerGroup = trackData.trackerGroup;
@@ -212,7 +215,7 @@ export function sequence(sequenceData = sequenceDataTest) {
         const trackId = trackData.id;
         const trackTime = trackData.time;
 
-        const trackVisibleState = null;
+        let trackVisibleState = true;
 
         // TRACK CONTROL : 
 
@@ -260,15 +263,17 @@ export function sequence(sequenceData = sequenceDataTest) {
 
         sequenceTrackLockButton.addEventListener("click",function(){
 
-            trackVisibleState != trackVisibleState;
+            trackVisibleState = !trackVisibleState;
 
-            const getAllTrackers = document.querySelectorAll(".tracker");
+            trackerHide(trackVisibleState)
 
-            if (trackVisibleState){
-                getAllTrackers.forEach(trackers =>{
-                    trackers.style.opacity = "50%";
-                })
-            }
+            // const getAllTrackers = document.querySelectorAll(".tracker");
+
+            // if (trackVisibleState){
+            //     getAllTrackers.forEach(trackers =>{
+            //         trackers.style.opacity = "50%";
+            //     })
+            // }
         });
 
         sequenceTrackerGroup.forEach(trackerData => { 
@@ -308,21 +313,27 @@ export function sequence(sequenceData = sequenceDataTest) {
             trackerInputContainer.classList.add("tracker-valuer-container");
             trackerInputContainer.style.borderColor = `${trackColor}`;
 
-            const trackerStartInput = document.createElement("input");
-            trackerStartInput.classList.add("tracker-value", "tracker-start-value");
-            trackerStartInput.value = `${trackerStartValue}`;
-
             const trackerNameInput = document.createElement("input");
             trackerNameInput.classList.add("tracker-name");
             trackerNameInput.value = `${trackerName}`;
 
-            const trackerEndInput = document.createElement("input");
-            trackerEndInput.classList.add("tracker-value", "tracker-end-value");
-            trackerEndInput.value = `${trackerEndValue}`;
+            const trackerStartPointContainer = document.createElement("div");
+            trackerStartPointContainer.classList.add("tracker-start-point-container");
+
+            const trackerStartPointIcon = document.createElement("i");
+            trackerStartPointIcon.className = trackerPointUnselect;
+
+            const trackerEndPointContainer = document.createElement("div");
+            trackerEndPointContainer.classList.add("tracker-end-point-container");
+
+            const trackerEndPointIcon = document.createElement("i");
+            trackerEndPointIcon.className = trackerPointUnselect;
  
-            trackerInputContainer.appendChild(trackerStartInput);
+            trackerStartPointContainer.appendChild(trackerStartPointIcon);
+            trackerEndPointContainer.appendChild(trackerEndPointIcon);
             trackerInputContainer.appendChild(trackerNameInput);
-            trackerInputContainer.appendChild(trackerEndInput);
+            trackerInputContainer.appendChild(trackerStartPointContainer);
+            trackerInputContainer.appendChild(trackerEndPointContainer);
             trackerBody.appendChild(trackerInputContainer);
             trackerHandleLeft.appendChild(trackerHandleLeftIndicator);
             trackerHandleRight.appendChild(trackerHandleRightIndicator);
@@ -331,6 +342,71 @@ export function sequence(sequenceData = sequenceDataTest) {
             tracker.appendChild(trackerHandleRight);
             sequenceTrackerRow.appendChild(tracker);
             sequenceTrackerContainer.insertBefore(sequenceTrackerRow,sequenceStaticTrackerRow);
+
+            let startPointState = false;
+            let endPointState = false;
+
+            trackerStartPointContainer.addEventListener("click",function(){
+
+                startPointState = !startPointState; 
+
+                if(startPointState){
+                    trackerStartPointIcon.className = `${trackerPointSelected}`;
+                    console(`Tracker '${trackerName}' Start point Added`,"success");
+                }else{
+                    trackerStartPointIcon.className = `${trackerPointUnselect}`;
+                    console(`Tracker '${trackerName}' Start point Removed`,"success");
+                }
+
+
+            }); 
+
+            trackerEndPointContainer.addEventListener("click",function(){
+
+                endPointState = !endPointState; 
+
+                if(endPointState){
+                    trackerEndPointIcon.className = `${trackerPointSelected}`;
+                    console(`Tracker '${trackerName}' End point Added`,"success");
+                }else{ 
+                    trackerEndPointIcon.className = `${trackerPointUnselect}`;
+                    console(`Tracker '${trackerName}' End point Removed`,"success");
+                }
+
+            }); 
+
+            function trackerHide(state){
+                if(state){
+                    tracker.style.display = "none";
+                }else{
+                    tracker.style.display = "flex";
+                }
+            }
+
+            function trackerUpdateName(newName){
+                trackerData.name = newName;
+            }
+
+            trackerNameInput.addEventListener("input",function(){
+                trackerUpdateName(trackerNameInput.value);
+                console(trackerNameInput.value)
+            });
+
+            trackerHandleLeft.addEventListener("mousedown",function(){
+                trackerHandleLeftIndicator.style.background = "#111111";
+            })
+
+            document.addEventListener("mouseup",function(){
+                trackerHandleLeftIndicator.style.background = `${trackColor}`;
+            })
+
+            trackerHandleRight.addEventListener("mousedown",function(){
+                trackerHandleRightIndicator.style.background = "#111111"
+            })
+
+            document.addEventListener("mouseup",function(){
+                trackerHandleRightIndicator.style.background = `${trackColor}`;
+            })
 
             function trackerHandleContextMenu(e) {
                 e.preventDefault(); // Previne o menu de contexto padrão do navegador

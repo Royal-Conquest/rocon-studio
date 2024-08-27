@@ -19,7 +19,7 @@ const menuBar = getUi("menu-bar");
 
 export function windowMenu(menu, menus) {
     windowMenuContainer.innerHTML = "";
-    windowMenuContainer.style.display = "flex";
+    windowMenuContainer.style.display = "flex"; 
 
     function hideWindowMenuContainer(event) {
         if (!windowMenuContainer.contains(event.target) && event.target !== menuBar) {

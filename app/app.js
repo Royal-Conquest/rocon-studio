@@ -26,11 +26,10 @@ import { viewport } from "../modules/viewport/viewport.js"
 // import { tabManage } from "../modules/tab-manage/tab-manage.js";
 import { tabLoad } from "../modules/tab-load/tab-load.js";
 import { sequence } from "../modules/sequence/sequence.js";
-// import { resizeHandle } from "../modules/resize-handle/resize-handle.js"; 
 import { applicationPath } from "../modules/application-path/application-path-.js";
 import { codeEditor } from "../modules/code-editor/code-editor.js";
-import { autoComplete } from "../modules/auto-complete/auto-complete.js";
 import { statusBar } from "../modules/status-bar/status-bar.js";
+import { resizeHandle } from "../modules/resize-handle/resize-handle.js"
 
 // WINDOWS : 
 
@@ -60,10 +59,9 @@ function appLoad(){
         gridHeight : 25  
     })    
     sequence();
-    // resizeHandle();
+    resizeHandle();
     applicationPath();
     codeEditor();
-    // autoComplete();
     statusBar();
 }
 
@@ -109,12 +107,28 @@ function handleMenuNew(){
             id: "HGT"
         },
         {
-            name: "File Option",
+            name: "Inport",
             divisor: false,
             id: "HGT"
         },
         {
-            name: "File Option",
+            name: "Export",
+            divisor: true,
+            id: "HGT"
+        },
+        {
+            name: "Preferences",
+            divisor: true,
+            id: "HGT"
+        },
+        {
+            name: "Addon",
+            divisor: true,
+            id: "HGT"
+        }
+        ,
+        {
+            name: "Exit",
             divisor: false,
             id: "HGT"
         }

@@ -10,7 +10,7 @@
 
 // RESIZE HANDLE : 
 
-import { getUi } from "../../get-ui/get-ui.js";
+import { getUi } from "../get-ui/get-ui.js";
 
 const resizeType = {
     type : "singleObject"
@@ -23,11 +23,11 @@ export function resizeHandle(settings = resizeType) {
     const viewportUI = getUi("viewport-ui");
     const resizeHandleRect = getUi("resize-handle-rect");
 
-    const anchorPoint = getUi("anchor-point");
-    const rotationHandleRight = getUi("rotation-handle-right");
-    const rotationHandleLeft = getUi("rotation-handle-left");
-    const rotationHandleTop = getUi("rotation-handle-top");
-    const rotationHandleBottom = getUi("rotation-handle-bottom");
+    // const anchorPoint = getUi("anchor-point");
+    // const rotationHandleRight = getUi("rotation-handle-right");
+    // const rotationHandleLeft = getUi("rotation-handle-left");
+    // const rotationHandleTop = getUi("rotation-handle-top");
+    // const rotationHandleBottom = getUi("rotation-handle-bottom");
 
     const handles = {
         top: getUi("handle-top"),

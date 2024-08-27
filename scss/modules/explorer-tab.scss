@@ -44,7 +44,7 @@ $explorer-folder-row-gap: $inside-tab-gap;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    border-left: 3px solid $tab-color;
+    border-left: 1px solid $tab-color;
     &:hover{
         // background: $primary-color;
         border-color: $primary-color;
