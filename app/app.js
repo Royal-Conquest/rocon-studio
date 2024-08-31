@@ -30,6 +30,7 @@ import { applicationPath } from "../modules/application-path/application-path-.j
 import { codeEditor } from "../modules/code-editor/code-editor.js";
 import { statusBar } from "../modules/status-bar/status-bar.js";
 import { resizeHandle } from "../modules/resize-handle/resize-handle.js"
+// import { explorerTab } from "../modules/tooltip/tooltip.js";
 
 // WINDOWS : 
 
@@ -63,6 +64,7 @@ function appLoad(){
     applicationPath();
     codeEditor();
     statusBar();
+    // explorerTab();
 }
 
 document.addEventListener("DOMContentLoaded",appLoad());

@@ -389,7 +389,7 @@ export function sequence(sequenceData = sequenceDataTest) {
 
             trackerNameInput.addEventListener("input",function(){
                 trackerUpdateName(trackerNameInput.value);
-                console(trackerNameInput.value)
+                console(trackerNameInput.value);
             });
 
             trackerHandleLeft.addEventListener("mousedown",function(){
