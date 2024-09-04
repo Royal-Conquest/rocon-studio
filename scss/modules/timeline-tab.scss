@@ -181,7 +181,7 @@ $tracker-in-border: 2px;
 
 // TRACKER : 
 
-$tracker-color: #4a0472;
+$tracker-color: $quaternary-color;
 
 .tracker{
     position: absolute;
@@ -235,9 +235,9 @@ $tracker-color: #4a0472;
         height: 100%;
         box-sizing: border-box;
         border: 3px solid $tracker-color;
-        // background: #0000002a;
-        display: flex;
-        justify-content: center; 
+        // background: $transparent-dark;
+        display: flex; 
+        justify-content: center;  
         align-items: center;
         background-image: url('C:/Users/Rhyan Eduardo/Documents/GitHub/rocon-studio/assets/img/tracker-diagonal-lines.png') ;
         background-size: 50px;
@@ -417,7 +417,7 @@ $tracker-color: #4a0472;
     width: 200px;
     height: 100%;
     box-sizing: border-box;
-    background: $transparent-green;
+    background: $quaternary-color;
     z-index: 1;
     display: flex; 
     justify-content: center;

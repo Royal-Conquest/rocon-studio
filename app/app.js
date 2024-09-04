@@ -31,6 +31,9 @@ import { codeEditor } from "../modules/code-editor/code-editor.js";
 import { statusBar } from "../modules/status-bar/status-bar.js";
 import { resizeHandle } from "../modules/resize-handle/resize-handle.js"
 // import { explorerTab } from "../modules/tooltip/tooltip.js";
+import { uiImageLoad } from "../modules/ui-image-load/ui-image-load.js";
+import { assetTab } from "../modules/asset-tab/asset-tab.js";
+import { twoDCamera } from "../modules/2d-camera/2d-camera.js";
 
 // WINDOWS : 
 
@@ -54,17 +57,19 @@ function appLoad(){
     inspector();
     presetHighlight(); 
     tabLoad();
-    console("Application Started...", "success"); 
     viewport({
         gridWidth : 25,
         gridHeight : 25  
     })    
     sequence();
-    resizeHandle();
     applicationPath();
     codeEditor();
     statusBar();
     // explorerTab();
+    uiImageLoad();
+    assetTab();
+    twoDCamera();
+    console("Application Started...", "success"); 
 }
 
 document.addEventListener("DOMContentLoaded",appLoad());
@@ -209,19 +214,13 @@ timelineTabButton.addEventListener("click",function(){
 termninalTabButton.addEventListener("click",function(){
     tab("terminal")
 });
+
+
+
+
+
+
  
-// RANGE PROGRESS HIGH LIGHT : 
-
-const inputRange = document.querySelectorAll(".inspector-range");
-
-const inputRangee = document.getElementById("label-opacity-range");
-const uiRangeProgress = new RangeProgress(inputRange);
-
-// const listPath = applicationPath("C:/Users/Rhyan Eduardo/Documents/GitHub/rocon-studio/game")
-// console(listPath,"log");
-
-// VERIFY IF TAB HAVE CHILDRES : 
-
 
 
 

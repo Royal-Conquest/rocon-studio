@@ -22,6 +22,7 @@ const twoDStage = getUi("viewport-tab");
 const inspectorTab = getUi("inspector-tab");
 const explorerTab = getUi("explorer-tab");
 const codeEidtorTab = getUi("code-editor-tab");
+const assetTab = getUi("asset-tab");
 
 export function tabLoad(){
  
@@ -59,6 +60,12 @@ export function tabLoad(){
         {
             name: "Explorer",
             content: explorerTab,
+            ID: "TABTgL",
+            location: "left"
+        },
+        {
+            name: "Asset",
+            content: assetTab,
             ID: "TABTgL",
             location: "left"
         },

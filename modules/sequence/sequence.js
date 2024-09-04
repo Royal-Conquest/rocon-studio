@@ -30,7 +30,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#A71919",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -56,7 +56,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -83,7 +83,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -102,7 +102,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -121,7 +121,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -140,7 +140,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#00ba32",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -159,7 +159,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -177,7 +177,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#bf8e24",
+        color : "#1E1E1E",
         id : "4544",
         trackerGroup : [
             {
@@ -307,11 +307,11 @@ export function sequence(sequenceData = sequenceDataTest) {
             trackerHandleRightIndicator.style.background = `${trackColor}`;
 
             const trackerBody = document.createElement("div"); // Alterado para 'div' caso 'tracker-body' não seja um elemento customizado
-            trackerBody.classList.add("tracker-body");
+            trackerBody.classList.add("tracker-body");  
 
             const trackerInputContainer = document.createElement("div"); // Alterado para 'div' caso 'tracker-valuer-container' não seja um elemento customizado
             trackerInputContainer.classList.add("tracker-valuer-container");
-            trackerInputContainer.style.borderColor = `${trackColor}`;
+            // trackerInputContainer.style.borderColor = `${trackColor}`;
 
             const trackerNameInput = document.createElement("input");
             trackerNameInput.classList.add("tracker-name");

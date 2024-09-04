@@ -20,11 +20,12 @@ $handle-rect-size: 100px;
     width: $handle-rect-size;
     height: $handle-rect-size; 
     border: 1px dashed $gray-color;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     left: 10px;
     top: 10px;
+    z-index: 100;
 }
 
 // HANDLE : 

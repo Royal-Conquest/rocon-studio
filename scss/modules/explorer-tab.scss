@@ -27,7 +27,7 @@
 
 $explorer-folder-row-height: 25px;
 $explorer-folder-row-gap: $inside-tab-gap;
-$explorer-root-color: $quaternary-color;
+$explorer-root-color: lighten($quaternary-color, 10%);
 
 .explorer-folder-root-container{
     position: relative;
