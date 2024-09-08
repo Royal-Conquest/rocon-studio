@@ -17,7 +17,7 @@ import { getUi } from "../get-ui/get-ui.js";
 import { console } from "../console/console.js";
 import { contextMenu } from "../context-menu/context-menu.js";
 
-const TrackerDefaultColor = {
+const TrackerColor = {
     red : "#A71919",
     purple : "#4a0472",
     yeallow : "#bf8e24",
@@ -56,7 +56,7 @@ const sequenceDataTest = [
         time : "",
         lock : false,
         visible : true,
-        color : "#1E1E1E",
+        color : TrackerColor.purple,
         id : "4544",
         trackerGroup : [
             {
@@ -236,6 +236,7 @@ export function sequence(sequenceData = sequenceDataTest) {
         const sequenceTrackDeleteButton = document.createElement("button");
         const sequenceTrackVisibleButton = document.createElement("button");
         const sequenceTrackAddButton = document.createElement("button");
+        const sequenceTrackSettingsButton = document.createElement("button")
 
         const sequenceTrackLockButtonIcon = document.createElement("i");
         sequenceTrackLockButtonIcon.classList.add("ri-lock-fill");
@@ -246,13 +247,18 @@ export function sequence(sequenceData = sequenceDataTest) {
         const sequenceTrackVisibleButtonIcon = document.createElement("i");
         sequenceTrackVisibleButtonIcon.classList.add("ri-eye-fill");
 
+        const sequenceTrackSettingsButtonIcon = document.createElement("i");
+        sequenceTrackSettingsButtonIcon.classList.add("ri-settings-4-fill");
+
         const sequenceTrackAddButtonIcon = document.createElement("i");
         sequenceTrackAddButtonIcon.classList.add("ri-add-large-fill");
 
+        sequenceTrackSettingsButton.appendChild(sequenceTrackSettingsButtonIcon);
         sequenceTrackLockButton.appendChild(sequenceTrackLockButtonIcon);
         sequenceTrackDeleteButton.appendChild(sequenceTrackDeleteButtonIcon);
         sequenceTrackVisibleButton.appendChild(sequenceTrackVisibleButtonIcon);
         sequenceTrackAddButton.appendChild(sequenceTrackAddButtonIcon);
+        sequenceTrackControl.appendChild(sequenceTrackSettingsButton);
         sequenceTrackControl.appendChild(sequenceTrackLockButton);
         sequenceTrackControl.appendChild(sequenceTrackDeleteButton);
         sequenceTrackControl.appendChild(sequenceTrackVisibleButton);
@@ -284,7 +290,7 @@ export function sequence(sequenceData = sequenceDataTest) {
             const trackerStartValue = trackerData.startValue;
             const trackerEndValue = trackerData.endValue;
 
-            // TRACKER : 
+            // TRACKER :  
 
             const tracker = document.createElement("div");
             tracker.classList.add("tracker");
@@ -311,7 +317,7 @@ export function sequence(sequenceData = sequenceDataTest) {
 
             const trackerInputContainer = document.createElement("div"); // Alterado para 'div' caso 'tracker-valuer-container' não seja um elemento customizado
             trackerInputContainer.classList.add("tracker-valuer-container");
-            // trackerInputContainer.style.borderColor = `${trackColor}`;
+            trackerInputContainer.style.borderColor = `${trackColor}`;
 
             const trackerNameInput = document.createElement("input");
             trackerNameInput.classList.add("tracker-name");
@@ -352,9 +358,11 @@ export function sequence(sequenceData = sequenceDataTest) {
 
                 if(startPointState){
                     trackerStartPointIcon.className = `${trackerPointSelected}`;
+                    // trackerStartPointIcon.style.color = TrackerColor.green;
                     console(`Tracker '${trackerName}' Start point Added`,"success");
                 }else{
                     trackerStartPointIcon.className = `${trackerPointUnselect}`;
+                    // trackerStartPointIcon.style.color = "";
                     console(`Tracker '${trackerName}' Start point Removed`,"success");
                 }
 
@@ -367,9 +375,11 @@ export function sequence(sequenceData = sequenceDataTest) {
 
                 if(endPointState){
                     trackerEndPointIcon.className = `${trackerPointSelected}`;
+                    // trackerEndPointIcon.style.color = TrackerColor.green;
                     console(`Tracker '${trackerName}' End point Added`,"success");
                 }else{ 
                     trackerEndPointIcon.className = `${trackerPointUnselect}`;
+                    // trackerEndPointIcon.style.color = "";
                     console(`Tracker '${trackerName}' End point Removed`,"success");
                 }
 

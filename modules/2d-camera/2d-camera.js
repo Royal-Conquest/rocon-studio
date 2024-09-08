@@ -109,13 +109,16 @@ export function twoDCamera() {
                     height: cameraviewContainer.offsetHeight - 25,
                     type: "camera",
                     rotate: false,
-                    element: camera.id
-                };
+                    element: cameraviewContainer
+                }; 
 
                 resizeHandle(cameraHandle);
             });
+
         });
     }
+
+    
 
     createCamera(cameraTemplate);
 }

@@ -1424,7 +1424,6 @@
   width: 100%;
   height: 100%;
   border: 1px solid #111111;
-  background-image: url("../../assets/img/alpha-bg.svg");
   background-size: 35px;
   background-repeat: repeat;
   display: flex;
@@ -1432,6 +1431,13 @@
   align-items: center;
   overflow: hidden;
   cursor: zoom-in;
+}
+#simple-file-viewer .simple-preview-container #simple-preview-container-zoom-area {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 1px dashed #D9D9D9;
+  z-index: 3;
 }
 #simple-file-viewer .simple-menu-container {
   position: relative;
@@ -1772,6 +1778,16 @@
   align-items: center;
   flex-direction: column;
 }
+.explorer-folder-root-container .explorer-component-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
 .explorer-folder-root-container .explorer-folder-header {
   position: relative;
   width: 100%;
@@ -2053,7 +2069,8 @@
 
 .timeline-left-container {
   position: relative;
-  width: 180px;
+  width: 160px;
+  min-width: 160px;
   height: 100%;
   box-sizing: border-box;
 }
@@ -2822,6 +2839,7 @@ body i {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  min-width: 100%;
 }
 
 #ui-left-container {
@@ -2833,6 +2851,7 @@ body i {
   border-top: 3px solid #1E1E1E;
   border-left: 3px solid #1E1E1E;
   border-bottom: 3px solid #1E1E1E;
+  left: 0px;
 }
 
 #ui-center-container {
@@ -2857,6 +2876,7 @@ body i {
   border-top: 3px solid #1E1E1E;
   border-right: 3px solid #1E1E1E;
   border-bottom: 3px solid #1E1E1E;
+  right: 0px;
 }
 
 #ui-top-container {

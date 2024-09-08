@@ -126,10 +126,11 @@ body{
 
 #ui-view{
     position: relative;
-    display: flex;
+    display: flex; 
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    min-width: 100%;
 }
 
 // UI LEFT CONTAINER : 
@@ -143,6 +144,7 @@ body{
     border-top: $ui-container-gap solid $quaternary-color;
     border-left: $ui-container-gap solid $quaternary-color;
     border-bottom: $ui-container-gap solid $quaternary-color;
+    left: 0px;
 }
 
 // UI CENTER CONTAINER : 
@@ -171,6 +173,7 @@ body{
     border-top: $ui-container-gap solid $quaternary-color;
     border-right: $ui-container-gap solid $quaternary-color;
     border-bottom: $ui-container-gap solid $quaternary-color;
+    right: 0px;
 }
 
 // UI TOP CONTAINER :

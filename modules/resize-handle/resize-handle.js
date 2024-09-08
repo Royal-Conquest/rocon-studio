@@ -26,7 +26,9 @@ const resizeHandleTamplate = {
 
 export function resizeHandle(settings) {
 
-    const handleElement = getUi(settings.element);
+    const handleElement = settings.element;
+
+    console(typeof(handleElement))
 
     const previousResizeHandleRect = getUi("resize-handle-rect");
     if (previousResizeHandleRect) {

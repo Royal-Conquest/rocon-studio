@@ -27,9 +27,10 @@
 
 .timeline-left-container{
     position: relative;
-    width: 180px;
+    width: 160px;
+    min-width: 160px;
     height: 100%;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 // TIME RIGHT CONTAINER :
